@@ -24,7 +24,17 @@
 	tinyslider();
 
 	
-
+	document.querySelector('.close').addEventListener('click', () => {
+		document.getElementById('description-modal').style.display = 'none';
+	});
+	
+	window.addEventListener('click', (event) => {
+		const modal = document.getElementById('description-modal');
+		if (event.target === modal) {
+			modal.style.display = 'none';
+		}
+	});
+	
 
 	var sitePlusMinus = function() {
 
