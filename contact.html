@@ -11,7 +11,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
-  <link rel="shortcut icon" href="favicon.png">
+  <link rel="shortcut icon" href="/images/LOGO [ajanta R].jpeg.jpg">
 
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
@@ -30,7 +30,12 @@
 		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
 			<div class="container">
-				<a class="navbar-brand" href="index.html">Furni<span>.</span></a>
+				<a class="navbar-brand" href="index.html">
+					<div class="logo-rect">
+					  <img src="images/LOGO [ajanta R].jpeg.jpg" alt="Akshar Enterprise Logo" />
+					</div>
+				  </a>
+				  
 
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -41,16 +46,9 @@
 						<li class="nav-item">
 							<a class="nav-link" href="index.html">Home</a>
 						</li>
-						<li><a class="nav-link" href="shop.html">Shop</a></li>
+						<li><a class="nav-link" href="shop.html">Products</a></li>
 						<li><a class="nav-link" href="about.html">About us</a></li>
-						<li><a class="nav-link" href="services.html">Services</a></li>
-						<li><a class="nav-link" href="blog.html">Blog</a></li>
 						<li class="active"><a class="nav-link" href="contact.html">Contact us</a></li>
-					</ul>
-
-					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
-						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
 					</ul>
 				</div>
 			</div>
@@ -100,7 +98,11 @@
                       </svg>
                     </div> <!-- /.icon -->
                     <div class="service-contents">
-                      <p>43 Raymouth Rd. Baltemoer, London 3910</p>
+					<p>
+						<a href="https://maps.app.goo.gl/AZNJ7H6JNmFL1pZX9" target="_blank">
+							3 Shop, no 2, near gokuldham, Swaminarayan Nagar, Diya Nagar, Samrat Industrial Area, Rajkot, Gujarat 360004
+						</a>
+					</p>
                     </div> <!-- /.service-contents-->
                   </div> <!-- /.service -->
                 </div>
@@ -113,7 +115,7 @@
                       </svg>
                     </div> <!-- /.icon -->
                     <div class="service-contents">
-                      <p>info@yourdomain.com</p>
+                      <p>Superajanta56462@gmail.com</p>
                     </div> <!-- /.service-contents-->
                   </div> <!-- /.service -->
                 </div>
@@ -126,39 +128,89 @@
                       </svg>
                     </div> <!-- /.icon -->
                     <div class="service-contents">
-                      <p>+1 294 3925 3939</p>
+                      <p>+91 9662790002</p>
+                      <p>+91 9824456462</p>
                     </div> <!-- /.service-contents-->
                   </div> <!-- /.service -->
                 </div>
               </div>
 
-              <form>
-                <div class="row">
-                  <div class="col-6">
-                    <div class="form-group">
-                      <label class="text-black" for="fname">First name</label>
-                      <input type="text" class="form-control" id="fname">
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="form-group">
-                      <label class="text-black" for="lname">Last name</label>
-                      <input type="text" class="form-control" id="lname">
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="text-black" for="email">Email address</label>
-                  <input type="email" class="form-control" id="email">
-                </div>
+              <form id="contactForm">
+				<div class="row">
+				  <div class="col-6">
+					<div class="form-group">
+					  <label class="text-black" for="fname">Name </label>
+					  <input type="text" class="form-control" id="fname" name="fname">
+					</div>
+				  </div>
+				  <div class="col-6">
+					<div class="form-group">
+					  <label class="text-black" for="contact">Contact No.</label>
+					  <input type="text" class="form-control" id="contact" name="contact">
+					</div>
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="text-black" for="email">Email address</label>
+				  <input type="email" class="form-control" id="email" name="email">
+				</div>
+			  
+				<div class="form-group mb-5">
+				  <label class="text-black" for="message">Message</label>
+				  <textarea class="form-control" id="message" name="message" cols="30" rows="5"></textarea>
+				</div>
+			  
+				<button type="submit" class="btn btn-primary-hover-outline">Send Message</button>
+			  </form>
+			  
+			<script>
+				const form = document.getElementById('contactForm');
 
-                <div class="form-group mb-5">
-                  <label class="text-black" for="message">Message</label>
-                  <textarea name="" class="form-control" id="message" cols="30" rows="5"></textarea>
-                </div>
+				form.addEventListener('submit', function (e) {
+					e.preventDefault();
 
-                <button type="submit" class="btn btn-primary-hover-outline">Send Message</button>
-              </form>
+					const formData = new FormData(form);
+					const data = Object.fromEntries(formData.entries());
+
+					// Check if any field is empty
+					if (!data.fname || !data.contact || !data.email || !data.message) {
+						showPopup("Please fill out all fields before submitting.", "error");
+						return;
+					}
+
+					fetch("https://script.google.com/macros/s/AKfycbxRZTOXlRAb55b6vWTZDxCw9s6hZjnTfADKzDZfiIotNx1cSiufseFqnddnu2tPB_HPjQ/exec", {
+						method: "POST",
+						mode: "no-cors",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}).then(() => {
+						showPopup("Form submitted successfully! 🎉", "success");
+						form.reset();
+					}).catch((error) => {
+						showPopup("Oops! Something went wrong 😢", "error");
+						console.error("Error:", error);
+					});
+				});
+
+				function showPopup(message, type) {
+					const popup = document.createElement('div');
+					popup.className = `popup ${type}`;
+					popup.innerText = message;
+
+					document.body.appendChild(popup);
+
+					setTimeout(() => {
+						popup.classList.add('show');
+					}, 10);
+
+					setTimeout(() => {
+						popup.classList.remove('show');
+						setTimeout(() => popup.remove(), 300);
+					}, 3000);
+				}
+			</script>
 
             </div>
 
@@ -172,9 +224,7 @@
     </div>
   </div>
 
-  <!-- End Contact Form -->
-
-		
+  <!-- End Contact Form -->	
 
 		<!-- Start Footer Section -->
 		<footer class="footer-section">
